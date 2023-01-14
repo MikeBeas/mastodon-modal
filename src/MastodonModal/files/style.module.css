@@ -1,0 +1,235 @@
+* {
+  --mikebeas-mastodon-animation-duration: .3s;
+  --mikebeas-mastodon-scale-size: 1.1;
+
+  --mikebeas-mastodon-background-color: white;
+  --mikebeas-mastodon-text-color: black;
+  --mikebeas-mastodon-border-style: 1px lightgrey solid;
+
+  --mikebeas-mastodon-disabled-text-color: grey;
+
+  --mikebeas-mastodon-button-color: dodgerblue;
+  --mikebeas-mastodon-button-text-color: white;
+  --mikebeas-mastodon-cancel-button-text-color: black;
+  --mikebeas-mastodon-button-shadow-color: lightgrey;
+
+  --mikebeas-mastodon-input-border-radius: 10px;
+
+}
+
+.modalBackground {
+  z-index: 99999999999999999999;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  transition: background-color var(--mikebeas-mastodon-animation-duration);
+  pointer-events: none;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.modalBackgroundOpen {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  pointer-events: unset;
+}
+
+.modalBody {
+  cursor: default;
+  background-color: var(--mikebeas-mastodon-background-color);
+  color: var(--mikebeas-mastodon-text-color);
+  border: 1px transparent solid;
+  width: 550px;
+  border-radius: 10px;
+  padding: 20px 20px 0 20px;
+  box-sizing: border-box;
+  max-width: 90%;
+  max-height: 90%;
+  margin: auto;
+  transform: scale(var(--mikebeas-mastodon-scale-size));
+  opacity: 0;
+  transition: var(--mikebeas-mastodon-animation-duration);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.modalBodyOpen {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.headerWrapper {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: var(--mikebeas-mastodon-border-style);
+  color: var(--mikebeas-mastodon-text-color);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.content {
+  padding: 20px 0;
+  overflow: scroll;
+  line-break: loose;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.footerItem:first-of-type {
+  margin-left: 0;
+}
+
+.input {
+  background-color: transparent;
+  border: var(--mikebeas-mastodon-border-style);
+  border-radius: 0;
+  font-size: 18px;
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--mikebeas-mastodon-input-border-radius);
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.button {
+  border: 1px transparent solid;
+  cursor: pointer;
+  border-radius: var(--mikebeas-mastodon-input-border-radius);
+  width: fit-content;
+  user-select: none;
+  -webkit-user-select: none;
+  margin: 0;
+  width: 100%;
+  font-size: 16px;
+  padding: 10px 25px;
+  outline: none;
+  font-weight: 500;
+  color: var(--mikebeas-mastodon-button-text-color);
+  background-color: var(--mikebeas-mastodon-button-color);
+  box-sizing: border-box;
+}
+
+.button:active {
+  filter: brightness(.9);
+}
+
+.button:active:disabled {
+  filter: none;
+}
+
+.button:disabled {
+  background-color: var(--mikebeas-mastodon-button-shadow-color) !important;
+  color: var(--mikebeas-mastodon-disabled-text-color) !important;
+  border-color: var(--mikebeas-mastodon-button-shadow-color) !important;
+  cursor: not-allowed;
+}
+
+.cancel {
+  background-color: transparent;
+  color: var(--mikebeas-mastodon-cancel-button-text-color);
+  border: var(--mikebeas-mastodon-border-style)
+}
+
+.checkboxContainer {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkboxContainer input {
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  display: none;
+}
+
+.checkmark {
+  height: 25px;
+  width: 25px;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: var(--mikebeas-mastodon-border-style);
+  border-radius: 5px;
+}
+
+.checkboxContainer input:checked~.checkmark {
+  background-color: var(--mikebeas-mastodon-button-color);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkboxContainer input:checked~.checkmark:after {
+  display: block;
+}
+
+.checkboxContainer .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@media (prefers-color-scheme: dark) {
+  * {
+    --mikebeas-mastodon-background-color: rgb(55, 55, 55);
+    --mikebeas-mastodon-text-color: white;
+    --mikebeas-mastodon-border-style: 1px black solid;
+    --mikebeas-mastodon-border-style: 1px rgb(0, 0, 0) solid;
+    --mikebeas-mastodon-button-color: rgb(26, 119, 212);
+    --mikebeas-mastodon-cancel-button-text-color: white;
+    --mikebeas-mastodon-disabled-text-color: rgb(112, 112, 112);
+    --mikebeas-mastodon-button-shadow-color: rgba(25, 25, 25);
+  }
+
+  .modalBody {
+    border: var(--mikebeas-mastodon-border-style);
+  }
+}

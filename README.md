@@ -29,7 +29,7 @@ npm i mikebeas/mastodon-modal
 
 You can specify a version to install by using a GitHub tag, such as `npm i mikebeas/mastodon-modal#v1.0.0`.
 
-However, note that using this configuraiton-free method will create an entry in your `package.json` that looks like this:
+However, note that using this configuration-free method will create an entry in your `package.json` that looks like this:
 
 ```json
 "dependencies": {

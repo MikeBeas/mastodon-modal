@@ -1,6 +1,6 @@
 {
   "name": "@mikebeas/mastodon-modal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Share and follow modals for Mastodon",
   "main": "dist/index.js",
   "scripts": {
